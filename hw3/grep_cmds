@@ -1,0 +1,17 @@
+viewcount
+cat index.html | egrep -o "[0-9][0-9]?[0-9]?(,[0-9]+)* views" | cut -d" " -f1 
+
+duration
+cat index.html | egrep -o "Duration: ([0-9]+:)*[0-9]+" | cut -d" " -f2
+
+usernames
+cat index.html | egrep -o "class=\"yt-lockup-byline yt-ui-ellipsis yt-ui-ellipsis-2\"><a.*</a>" | cut -d">" -f3 | cut -d"<" -f1
+
+video id:
+cat index.html | egrep -o "watch\?v=[a-zA-Z0-9_-]+" | wc -l
+(each video doubled though)
+
+title:
+cat index.html | egrep -o "dir=\"ltr\">.*<" | cut -d">" -f2 | cut -d"<" -f1 
+1-(Length-2)
+

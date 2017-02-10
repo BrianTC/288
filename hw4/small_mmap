@@ -1,0 +1,10 @@
+./memorytest this is a test
+4196152
+
+Argc:   0x000000000005   |  0x7ffe4e1e622c
+Argv:   0x7ffe4e1e6338   |  0x7ffe4e1e6220
+Argv+0: 0x7ffe4e1e707b   |  0x7ffe4e1e6338   |00d|./memorytest
+Argv+1: 0x7ffe4e1e7088   |  0x7ffe4e1e6340   |005|this
+Argv+2: 0x7ffe4e1e708d   |  0x7ffe4e1e6348   |003|is
+Argv+3: 0x7ffe4e1e7090   |  0x7ffe4e1e6350   |002|a
+Argv+4: 0x7ffe4e1e7092   |  0x7ffe4e1e6358   |005|test
