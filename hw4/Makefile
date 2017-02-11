@@ -1,6 +1,6 @@
 CC=gcc
 PROGNAME=memorytest
-CLI_ARG= the quick brown fox jumped over the lazy dog
+CLI_ARG= the quick brown fox jumped over the lazy old dog
 ARGS= -I 
 WARN= -Wformat-contains-nul
 all: execute run

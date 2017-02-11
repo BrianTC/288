@@ -4,6 +4,7 @@ void printContentsArgv();
 void printAddressArgv();
 void printSpaceLine();
 void printSpaceLine_addr();
+void printContentsCharPtr();
 int main(int argc, char* argv[]){
     printSpaceLine_addr("0xffffffffffff");
     printSpaceLine();
@@ -32,7 +33,7 @@ int main(int argc, char* argv[]){
 void printAddressArgv(int argc, char *argv[]){
     for(int i=argc-1;i>=0;i--){
         char loopString[16];
-        sprintf(loopString,"Argv+%02ld: ",i);
+        sprintf(loopString,"Argv+%02d: ",i);
         printContentsCharPtr(loopString,argv[i],&argv[i]);
         printSpaceLine();
     }
@@ -47,14 +48,14 @@ void printAddressArgv(int argc, char *argv[]){
 //This function is to make the format for
 //Argc:    | 00 | 00 | 00 | 00 | 00 | 05 | 0x7ffe77ea362c
 //
-void printContentsCharPtr(char *name,char* memloc[],long int address){
-        char tString[16];
-        sprintf(tString,"%014p",memloc);
+void printContentsCharPtr(char *name,char* memloc[],long address){
+        char tString[15];
+        sprintf(tString,"0x%012lx",(long int) memloc);
         printf("%s",name);
         for(int i=2;i<strlen(tString);i+=2){
             printf("| %c%c ",tString[i],tString[i+1]);
         }
-        printf("| %p\n",address);
+        printf("| 0x%012lx\n",address);
 }
 
 //
@@ -91,7 +92,7 @@ void printContentsArgv(int argc, char* argv[],int asciiSwitch){
         char cchar= *(bbb-(i));
         if(asciiSwitch){
             if(cchar=='\0')
-                printf("| \\0 ",cchar);
+                printf("| \\0 ");
             else
                 printf("| %2c ",cchar);
         }
