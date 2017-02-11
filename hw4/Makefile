@@ -1,6 +1,6 @@
 CC=gcc
 PROGNAME=memorytest
-CLI_ARG= this is a test lets add some more and see how far this bastard will go
+CLI_ARG= the quick brown fox jumped over the lazy dog
 ARGS= -I 
 WARN= -Wformat-contains-nul
 all: execute run
