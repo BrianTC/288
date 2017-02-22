@@ -7,7 +7,7 @@
 struct clip *build_a_lst();
 struct clip *append();
 int find_length();
-void print_lst();
+void print_a_lst();
 void split_line();
 
 struct clip {
@@ -48,14 +48,17 @@ struct clip *build_a_lst(char *fn) {
 			tempLLine++;	
 		}
 
-		printf("%d",longestLine);
+		printf("LongestLine: %d\n",longestLine);
 		fp=fopen(fn,"r");
 		for(int i=0;i<lines;i++){
 			char line[longestLine];
 			fgets(line,longestLine,fp);
-			//printf("%s ",line);
 			split_line(fields,line);
+			hp=append(hp,fields);
 		}
+		printf("\n\n\n\n");
+		print_a_lst(hp);
+		
 	}
 	else
 		printf("File: %s Not Found\n",fn);
@@ -84,19 +87,46 @@ void split_line(char **fields,char *line) {
 		token=strtok(NULL,delim);
 		i++;
 	}
-	for(int i=0;i<fieldSize;i++){
-		printf("%s\n",fields[i]);
-	}
 	/* 
 		call strtok(line, delim);
 		repeat until strtok returns NULL using strtok(NULL, delim);
 	*/
 }
-
 /* set four values into a clip, insert a clip at the of the list */
 struct clip *append(struct clip *hp,char **five) {
   	struct clip *cp,*tp;
-
+	//create a new struct to put at the end of the chain provided by hp
+	tp=malloc(sizeof(struct clip));
+	tp->views=atoi(five[2]); //views
+	//printf("%d ",tp->views);
+	//five[1]; //user
+	tp->user=malloc(sizeof(five[1])*8);
+	strcpy(tp->user,five[1]);
+	//printf("%s ",tp->user);
+	
+	//five[0]; //title
+	tp->title=malloc(sizeof(five[0])*8);
+	strcpy(tp->title,five[0]);
+	//printf("%s ",tp->title);
+	//five[4]; //id
+	tp->id=malloc(sizeof(five[4])*8);
+	strcpy(tp->id,five[4]);
+	// printf("%s",tp->id);
+	// printf("\n");
+	printf("%s %s %d %s\n",tp->title,tp->user,tp->views,tp->id);
+	tp->next=NULL;	
+	if(hp==NULL){
+		hp=tp;
+	}
+	else{
+		//printf("addLoop %p\n",cp);
+		cp=hp;
+		while(cp->next!=NULL){
+			cp=cp->next;
+		}
+		cp->next=tp;
+	}
+	//from here traverse till next is null, then add tp to it
 	/* 
 		malloc tp
 		set views using atoi(*five)
@@ -110,6 +140,16 @@ struct clip *append(struct clip *hp,char **five) {
 }
 
 void print_a_lst(struct clip *cp) {
+	if(cp==NULL){
+		printf("Null Head Pointer");
+		return;
+	}
+	struct clip *tp=cp;
+	do{
+		printf("%s %s %d %s\n",tp->title,tp->user,tp->views,tp->id);
+		tp=tp->next;
+	} 
+	while(tp!=NULL);
 	/* 
 		use a while loop and the statement below to print the list
 		printf("%d,%s,%s,%s,%s\n",cp->views,cp->user,cp->id,cp->title,cp->time);
