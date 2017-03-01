@@ -86,15 +86,18 @@ void split_line(char **fields,char *line) {
 }
 /* set four values into a clip, insert a clip at the of the list */
 struct clip *append(struct clip *hp,char **five) {
+	// printf("%d,%d,%d\n",sizeof(five[1]),sizeof(five[0]),sizeof(five[4]));
+	// printf("%d,%d,%d\n",strlen(five[1]),strlen(five[0]),strlen(five[4]));
+	// printf("%s,\t%s,\t%s\n",five[1],five[0],five[4]);
   	struct clip *cp,*tp;
 	//create a new struct to put at the end of the chain provided by hp
 	tp=malloc(sizeof(struct clip));
 	tp->views=atoi(five[2]);
-	tp->user=malloc(sizeof(five[1])*8);
+	tp->user=malloc(strlen(five[1])*sizeof(char));
 	strcpy(tp->user,five[1]);
-	tp->title=malloc(sizeof(five[0])*8);
+	tp->title=malloc(strlen(five[0])*sizeof(char));
 	strcpy(tp->title,five[0]);
-	tp->id=malloc(sizeof(five[4])*8);
+	tp->id=(char*)malloc(strlen(five[4])*sizeof(char));
 	strcpy(tp->id,five[4]);
 	tp->next=NULL;	
 	if(hp==NULL){

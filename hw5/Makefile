@@ -5,7 +5,7 @@ CLI_ARG= stats.csv
 ARGS= -I 
 OUTFILE=output.txt
 
-all: compile makeList run runOut
+all: compile run runOut
 compile: ${SOURCEFILES}
 	$(CC) ${SOURCEFILES} -o ${PROGNAME} 
 makeList:
