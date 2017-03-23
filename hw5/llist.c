@@ -93,12 +93,16 @@ struct clip *append(struct clip *hp,char **five) {
 	//create a new struct to put at the end of the chain provided by hp
 	tp=malloc(sizeof(struct clip));
 	tp->views=atoi(five[2]);
-	tp->user=malloc(strlen(five[1])*sizeof(char));
+
+	tp->user=malloc(strlen(five[1])+1);
 	strcpy(tp->user,five[1]);
-	tp->title=malloc(strlen(five[0])*sizeof(char));
-	strcpy(tp->title,five[0]);
-	tp->id=(char*)malloc(strlen(five[4])*sizeof(char));
+
+	tp->title=malloc(strlen(five[0])+1);
+	strcpy(tp->title,five[0]);  
+
+	tp->id=malloc(strlen(five[4])+1);
 	strcpy(tp->id,five[4]);
+
 	tp->next=NULL;	
 	if(hp==NULL){
 		hp=tp;

@@ -12,5 +12,7 @@ makeList:
 	./ytstats.sh
 run:
 	./${PROGNAME} ${CLI_ARG}
+runBig:
+	./${PROGNAME} big_stats.csv
 runOut:
 	./${PROGNAME} ${CLI_ARG} > ${OUTFILE}
