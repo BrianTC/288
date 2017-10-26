@@ -1,0 +1,29 @@
+mysql> use cs288project
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------------+
+| Tables_in_cs288project    |
++---------------------------+
+| Table_2017_04_22_12_33_39 |
+| Table_2017_04_23_13_47_24 |
++---------------------------+
+2 rows in set (0.00 sec)
+
+mysql> explain Table_2017_04_23_13_47_24;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| activeNum   | int(11)      | YES  |     | NULL    |       |
+| stockName   | varchar(255) | YES  |     | NULL    |       |
+| stockSymbol | varchar(6)   | YES  |     | NULL    |       |
+| stockPrice  | varchar(16)  | YES  |     | NULL    |       |
+| stockVolume | int(11)      | YES  |     | NULL    |       |
+| chg         | decimal(6,3) | YES  |     | NULL    |       |
+| percchg     | decimal(6,3) | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> ^DBye
